@@ -1,0 +1,41 @@
+Objective:  
+To verify that SSH connectivity is successful using both password and key-based authentication mechanisms.
+
+Preconditions:  
+1. SSH server is set up and running.
+2. SSH client is installed on the test machine.
+3. User account with password authentication is set up on the SSH server.
+4. SSH private and public key pair is generated for key-based authentication.
+5. Public key is added to the `~/.ssh/authorized_keys` file on the SSH server.
+
+
+Test Steps (Password Authentication):
+
+1. From the SSH client, attempt to connect to the SSH server using the user account and password:  
+   `ssh username@ssh_server_ip_address`
+
+2. When prompted, enter the correct password for the user account.
+
+
+Expected Result (Password Authentication):
+1. The connection should be established without any errors.
+2. The terminal should display a message indicating successful login, and the user should be presented with the server's command prompt.
+
+Test Steps (Key-Based Authentication)**:
+
+1. From the SSH client, attempt to connect to the SSH server using key-based authentication:  
+   `ssh -i /path/to/private_key username@ssh_server_ip_address`
+
+
+Expected Result (Key-Based Authentication):
+1. The connection should be established without prompting for a password.
+2. The terminal should display a message indicating successful login, and the user should be presented with the server's command prompt.
+
+
+Postconditions:  
+1. User is logged out of the SSH server after the test.
+
+
+Notes:
+- Ensure the private key has restricted permissions (`chmod 600 /path/to/private_key`) to avoid potential unauthorized access.
+- It's recommended to run this test in a controlled environment to prevent security risks.
